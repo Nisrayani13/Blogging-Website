@@ -6,6 +6,10 @@ compatibility_flags = [ "nodejs_compat" ]
 DATABASE_URL="prisma://accelerate.prisma-data.net/?api_key=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcGlfa2V5IjoiODI0ODcyNTAtNjFlMy00N2E0LThiZmUtMWEyYmFmMWI1MjRlIiwidGVuYW50X2lkIjoiNzE5YzUzNTkxODIwNzAwMzE5NzMyYzk5NDhiNjNmYjRjZjUwNzMxMzhiOTNhYTFhNTFiNDVlMGI3YmNiNjJlYSIsImludGVybmFsX3NlY3JldCI6ImY0YTZhYTU3LTMxZDMtNDk2Zi05NmQyLTU5NzlmY2U5N2E5YiJ9.pTlU_rsZ1pLlGSDXXYU6mZZgG66_o2B0kAD5bOQ_Fos"
 JWT_PASSWORD="secret"
 
+# wrangler.toml (wrangler v3.78.6^)
+[observability]
+enabled = true
+
 # [vars]
 # MY_VAR = "my-variable"
 
