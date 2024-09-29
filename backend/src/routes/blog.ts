@@ -2,6 +2,7 @@ import { Hono } from "hono"
 import { Prisma, PrismaClient } from '@prisma/client/edge';
 import { withAccelerate } from '@prisma/extension-accelerate';                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
 import {sign,verify,decode } from "hono/jwt"
+import { CreatePostInputSchema, UpdatePostInputSchema } from "@nisrayani/bloggingsite";
 
 const blogRouter=new Hono<{
     Bindings:{
@@ -34,6 +35,9 @@ blogRouter.use("/*", async (c, next) => {
 blogRouter.post("/", async (c) => {
     const prisma= c.get("prisma")
     const body = await c.req.json();
+    if(!CreatePostInputSchema.safeParse(body).success)return c.json({
+        error:"error while parsing through zod input"
+    },403)
     const post = await prisma.post.create({
         data:{
             title:body.title,
@@ -49,8 +53,14 @@ blogRouter.post("/", async (c) => {
 
 blogRouter.put("/", async(c) => {
     const prisma =c.get("prisma")
-
     const body=await c.req.json();
+    const input={
+        title:body.title,
+        content:body.content
+    }
+    if(!UpdatePostInputSchema.safeParse(input).success)return c.json({
+        error:"error while parsing through zod input"
+    },403)
     const post= await prisma.post.update({
         where:{
             id: body.id,

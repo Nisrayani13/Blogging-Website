@@ -2,6 +2,8 @@ import { Hono } from "hono"
 import { Prisma, PrismaClient } from '@prisma/client/edge';
 import { withAccelerate } from '@prisma/extension-accelerate';                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
 import {sign,verify,decode } from "hono/jwt"
+import { z } from "zod";
+import { SigninInputSchema, SignupInputSchema } from "@nisrayani/bloggingsite";
 
 const userRouter= new Hono<{
     Bindings:{
@@ -15,8 +17,10 @@ const userRouter= new Hono<{
 
 userRouter.post("/signup", async (c) => {
     const prisma = c.get("prisma")
-
     const body = await c.req.json();
+    if(!SignupInputSchema.safeParse(body).success)return c.json({
+        error:"Error while parsing through input zod"
+    },403)
     const user = await prisma.user.create({
         data: {
             email: body.email,
@@ -33,6 +37,9 @@ userRouter.post("/signup", async (c) => {
 userRouter.post("/signin", async (c) => {
     const prisma = c.get("prisma");
     const body = await c.req.json();
+    if(!SigninInputSchema.safeParse(body).success)return c.json({
+        error:"Error while parsing through input zod"
+    },403)
     const userExist = await prisma.user.findUnique({
         where: {
             email: body.email
