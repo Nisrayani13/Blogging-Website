@@ -23,7 +23,7 @@ export default function Signcard({
           <button className="mt-0.5 bg-black text-white border rounded-lg w-full p-1.5 ">{buttonText} </button>
           <div className="pt-1 flex justify-center">
             <div className="text-base mr-1.5">{subheading}</div>
-            <a className="underline text-blue-400">{linktext} </a>
+            <a href={linkTo} className="underline text-blue-500">{linktext} </a>
           </div>
         </div>
       </div>
