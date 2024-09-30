@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function Signup() {
+export default function Blog() {
   return (
     <div>
-      Signup
+      blog
     </div>
   )
 }
