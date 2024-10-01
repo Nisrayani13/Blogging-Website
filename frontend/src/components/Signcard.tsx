@@ -1,5 +1,15 @@
 import React from "react";
 
+interface SigncardProps{
+  children:React.ReactNode,
+  heading:string,
+  subheading:string,
+  linktext:string,
+  linkTo:string,
+  buttonText:string,
+  buttonTo:string,
+}
+
 export default function Signcard({
   children,
   heading,
@@ -8,11 +18,11 @@ export default function Signcard({
   linkTo,
   buttonText,
   buttonTo,
-}) {
+}:SigncardProps) {
   const aboutTitle="Unleash Your Voice, Share Your Story"
   const aboutContent="Welcome to Blogosphere, where your thoughts inspire and your stories shape conversations. Whether you're here to write, read, or connect, this is your space to express ideas, explore new perspectives, and engage with a passionate community of creators."
   return (
-    <div className="grid grid-cols-2">
+    <div className="grid grid-cols-1 lg:grid-cols-2">
 
       {/* Left Half */}
       <div className="col-span-1 h-screen items-center flex justify-center">
@@ -29,7 +39,7 @@ export default function Signcard({
       </div>
 
       {/* Right Half */}
-      <div className="col-span-1 h-screen bg-slate-100 ietms-center flex justify-center">
+      <div className="invisible lg:visible col-span-1 h-screen bg-slate-100 ietms-center flex justify-center">
         <div className="flex items-center justify-center">
           <div className="mx-10 px-4">
             <div className="text-center font-bold text-2xl mb-3"> "{aboutTitle}"" </div>

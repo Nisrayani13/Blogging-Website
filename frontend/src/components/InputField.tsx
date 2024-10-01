@@ -1,6 +1,11 @@
 import React from "react";
 
-export default function InputField({ label, placeholder }) {
+interface InputFieldProps{
+  label:string, 
+  placeholder:string
+}
+
+export default function InputField({ label, placeholder } :InputFieldProps) {
   const id = label.replace(/\s+/g, "_").toLowerCase();
   return (
     <div className="mt-3.5">
