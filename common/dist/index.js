@@ -8,7 +8,8 @@ exports.SignupInputSchema = zod_1.z.object({
     password: zod_1.z.string()
 });
 exports.SigninInputSchema = zod_1.z.object({
-    email: zod_1.z.string().email()
+    email: zod_1.z.string().email(),
+    password: zod_1.z.string()
 });
 exports.CreatePostInputSchema = zod_1.z.object({
     title: zod_1.z.string(),

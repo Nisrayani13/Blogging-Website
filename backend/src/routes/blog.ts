@@ -25,9 +25,9 @@ blogRouter.use("/*", async (c, next) => {
         c.set("userId", jwtPayload.id); 
         await next();
     } catch (error) {
-        return c.body("Error while user verification!!!", {
-            status: 403
-        });
+        return c.json({
+            message: "Error while user verification!!"
+        },403)
     }
 });
 
@@ -36,7 +36,7 @@ blogRouter.post("/", async (c) => {
     const prisma= c.get("prisma")
     const body = await c.req.json();
     if(!CreatePostInputSchema.safeParse(body).success)return c.json({
-        error:"error while parsing through zod input"
+        message:"error while parsing through zod input"
     },403)
     const post = await prisma.post.create({
         data:{
@@ -59,7 +59,7 @@ blogRouter.put("/", async(c) => {
         content:body.content
     }
     if(!UpdatePostInputSchema.safeParse(input).success)return c.json({
-        error:"error while parsing through zod input"
+        message:"error while parsing through zod input"
     },403)
     const post= await prisma.post.update({
         where:{
