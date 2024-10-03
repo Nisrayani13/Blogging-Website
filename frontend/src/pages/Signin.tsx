@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import Signcard from './Signcard'
-import InputField from './InputField'
+import Signcard from '../components/Signcard'
+import InputField from '../components/InputField'
 import { SigninInputType } from '@nisrayani/bloggingsite'
 import { BACKEND_URL } from '../config'
 import axios from "axios"
@@ -22,7 +22,7 @@ export default function Signin() {
       })
       const jwt=response.data.jwt;
       localStorage.setItem("jwt",jwt)
-      navigate("/blog")
+      navigate("/blogs")
     }catch(error: any){
       setWarning(error.response.data.message);
       console.error(`error while sending request to backend: ${error.message}`)

@@ -26,7 +26,7 @@ blogRouter.use("/*", async (c, next) => {
         await next();
     } catch (error) {
         return c.json({
-            message: "Error while user verification!!"
+            message: "You are not logged in!!"
         },403)
     }
 });
@@ -78,7 +78,18 @@ blogRouter.put("/", async(c) => {
 blogRouter.get("/bulk", async (c) => {
     const prisma = c.get("prisma")
     
-        const posts = await prisma.post.findMany();
+        const posts = await prisma.post.findMany({
+            select:{
+                id:true,
+                title:true,
+                content:true,
+                author:{
+                    select:{
+                        name:true
+                    }
+                }
+            }
+        });
         
         return c.json({
             posts: posts,
@@ -87,7 +98,6 @@ blogRouter.get("/bulk", async (c) => {
 
 blogRouter.get("/:id",async (c) => {
     const prisma =c.get("prisma")
-    console.log(`Inside id router`)
     const id=c.req.param("id")
     const post=await prisma.post.findUnique({
         where:{
