@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Signcard from '../components/Signcard'
 import InputField from '../components/InputField'
 import { SigninInputType } from '@nisrayani/bloggingsite'
@@ -13,6 +13,13 @@ export default function Signin() {
     password:""
   })
   const [warning,setWarning]=useState();
+
+  const jwt=localStorage.getItem("jwt");
+  useEffect(()=>{
+    if(jwt!=null){
+      navigate("/blogs")
+    }
+  },[jwt])
 
   const onClick= async ()=>{
     try{

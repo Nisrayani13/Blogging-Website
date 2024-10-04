@@ -1,12 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 interface AppbarProps{
     authorName:string
 }
 export default function Appbar({authorName}:AppbarProps) {
+  const [dropDownVisible, setDropDownVisible]=useState<Boolean>(false);
+
+  const toggle=()=>{
+    setDropDownVisible((dropDownVisible)=>!dropDownVisible)
+  }
+
   return (
-      <div className="bg-white px-4 flex items-center justify-between border-b mb-4 py-1">
+      <div className="fixed top-0 left-0 right-0 bg-white px-4 flex items-center justify-between border-b mb-4 py-1">
         <div className="flex justify-center items-center">
           <svg width="60" height="60"
               viewBox="0 -55 256 256" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid">
@@ -19,7 +25,7 @@ export default function Appbar({authorName}:AppbarProps) {
           </svg>
           <div className="px-5 text-2xl font-bold">Blogosphere</div>
         </div>
-        <div className="flex justify-between items-center gap-x-5">
+        <div className="flex justify-between items-center gap-x-5 mr-5">
           <Link to={"/publish"}>
             <button className="bg-green-600 rounded-full text-white py-1.5 px-3">
               <div className="flex gap-x-1 pr-1 justify-center items-center">
@@ -33,8 +39,10 @@ export default function Appbar({authorName}:AppbarProps) {
               </div>
             </button>
           </Link>
-          <div className="bg-black rounded-full w-9 h-9 text-center text-white text-2xl">
-            {authorName[0]}
+          <div>
+            <button className="bg-black rounded-full w-9 h-9 text-center text-white text-2xl" onClick={toggle}>
+              {authorName[0]}
+            </button>
           </div>
         </div>
 
