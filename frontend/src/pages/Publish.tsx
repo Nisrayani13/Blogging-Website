@@ -1,6 +1,7 @@
-import React from 'react'
-import Appbar from '../components/Appbar'
-import { Link } from 'react-router-dom'
+import axios from 'axios';
+import React, { ChangeEvent, useState } from 'react'
+import { BACKEND_URL } from '../config';
+import { useNavigate } from 'react-router-dom';
 
 interface blog{
     title:string,
@@ -10,13 +11,28 @@ interface blog{
 }
 
 export default function Publish() {
+    const [title, setTitle] =useState("");
+    const [content,setContent]=useState("");
+    const navigate=useNavigate();
 
-  const onClick=()=>{
-
+  const onClick=async ()=>{
+        try{
+            await axios.post(`${BACKEND_URL}/api/v1/blog`,{
+                title:title,
+                content:content
+            },{
+                headers:{
+                    Authorization:`Bearer ${localStorage.getItem("jwt")}`
+                }
+            })
+            navigate("/blogs")
+        }catch(error:any){
+            alert(error.message)
+        }
   }
   return (
     <div className=''>
-        <Topbar></Topbar>
+        <Topbar onClick={onClick}></Topbar>
         <div className='flex mx-8 mt-8'>
             <div className=''>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="0.5" stroke="currentColor" className="size-12 mt-2">
@@ -25,15 +41,23 @@ export default function Publish() {
 
             </div>
             <div className='px-2 flex-grow'>
-                <input type='text' placeholder='Title' className='px-2 block w-full text-4xl py-3 mb-4 border-l border-gray-300'></input>
-                <textarea placeholder='Tell your story...' className='px-2 block w-full text-2xl min-h-[250px] italic'></textarea>
+                <input type='text' placeholder='Title' className='px-2 block w-full text-3xl py-3 mb-4 border-l border-gray-300'
+                    onChange={(event: ChangeEvent<HTMLInputElement>)=> setTitle((title)=> event.target.value)}
+                ></input>
+                <textarea rows={8} placeholder='Tell your story...' className='px-2 block w-full text-2xl italic'
+                    onChange={(event: ChangeEvent<HTMLTextAreaElement>)=> setContent((content)=> event.target.value)}
+                ></textarea>
             </div>
         </div>
     </div>
   )
 }
 
-function Topbar(){
+interface TopbarProps{
+    onClick:()=>void
+}
+
+function Topbar({onClick}:TopbarProps){
     return <div className="mx-4 px-4 flex items-center justify-between border-b mb-5 mt-1">
     <div className="flex justify-center items-center">
         <svg width="60" height="60"
@@ -48,7 +72,7 @@ function Topbar(){
         <div className="px-5 text-2xl font-bold">Blogosphere</div>
     </div>
     <div className="flex justify-between items-center gap-x-5">
-        <button className="bg-green-600 rounded-full text-white py-1.5 px-4">Publish</button>
+        <button className="bg-green-600 rounded-full text-white py-1.5 px-4" onClick={onClick}>Publish</button>
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="size-6">
              <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
         </svg>

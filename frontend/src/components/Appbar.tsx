@@ -6,7 +6,7 @@ interface AppbarProps{
 }
 export default function Appbar({authorName}:AppbarProps) {
   return (
-      <div className="bg-white px-4 flex items-center justify-between border-b mb-4 py-1.5">
+      <div className="bg-white px-4 flex items-center justify-between border-b mb-4 py-1">
         <div className="flex justify-center items-center">
           <svg width="60" height="60"
               viewBox="0 -55 256 256" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid">
@@ -33,7 +33,7 @@ export default function Appbar({authorName}:AppbarProps) {
               </div>
             </button>
           </Link>
-          <div className="bg-gray-800 rounded-full w-9 h-9 text-center text-white text-2xl">
+          <div className="bg-black rounded-full w-9 h-9 text-center text-white text-2xl">
             {authorName[0]}
           </div>
         </div>
