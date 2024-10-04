@@ -1,7 +1,7 @@
 import React from 'react';
 import BlogsCard from '../components/BlogsCard';
 import Appbar from '../components/Appbar';
-import useBlogs from '../hooks/useBlogs';
+import useBlogs from '../hooks/hooks';
 
 export default function Blogs() {
   const {blogs,loading}=useBlogs();

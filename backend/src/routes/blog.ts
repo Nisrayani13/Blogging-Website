@@ -102,9 +102,21 @@ blogRouter.get("/:id",async (c) => {
     const post=await prisma.post.findUnique({
         where:{
             id
+        },
+        select:{
+            id:true,
+            title:true,
+            content:true,
+            author:{
+                select:{
+                    name:true
+                }
+            }
         }
     })
-    return c.json(post,200)
+    return c.json({
+        post:post
+    },200)
 });
 
 export default blogRouter
