@@ -16,8 +16,8 @@ interface BlogsCardProps {
 
 export default function BlogsCard({id,authorName,title,content,publishedDate}: BlogsCardProps) {
   return (
-    <Link to={`/blog/${id}`} className="w-2/4">
-      <div className="cursor-pointer mt-1 mb-2 mx-5 border-b pt-2 pb-3 px-6">
+    <Link to={`/blog/${id}`} className="w-full mx-4 bg-white rounded-lg shadow mb-3">
+      <div className="cursor-pointer mt-1 mb-2 mx-5 pt-2 pb-3 px-6">
         <div className="flex items-center text-sm mb-2">
           <div className="bg-gray-800 rounded-full h-6 w-6 text-slate-100 flex justify-center items-center text-sm pb-1">{authorName[0]}</div>
           <div className="ml-3 flex justify-between items-center gap-1">
@@ -27,7 +27,7 @@ export default function BlogsCard({id,authorName,title,content,publishedDate}: B
           </div>
         </div>
         <div className="font-bold text-xl mb-1"> {title} </div>
-        {content.length>100?<div className=""> {content.slice(0,100) + "..."} </div>:<div> {content} </div> } 
+        {content.length>250?<div className=""> {content.slice(0,250) + "..."} </div>:<div> {content} </div> } 
         <div className="mt-5 text-sm text-slate-400"> {Math.floor(content.length/100)} min read </div>
       </div>
     </Link>

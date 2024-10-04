@@ -9,7 +9,7 @@ export default function Blog() {
   const {blog,loading}=useBlog(id)
   return <>
     <Appbar authorName={blog.author.name}></Appbar>
-    {loading?<div>Loading...</div>:<BlogDetails blog={blog}></BlogDetails>}
+    {loading?<div className='flex justify-center items-center mt-52 italic'>Loading...</div>:<BlogDetails blog={blog}></BlogDetails>}
   </>
 }
 
