@@ -30,6 +30,7 @@ export default function useBlogs() {
 
 
 export function useBlog(id: string){
+    console.log(`Inside Useblog hook`)
     const [blog,setBlog]=useState<Blog>({
         id:"",
         title:"",
@@ -40,13 +41,14 @@ export function useBlog(id: string){
     });
 
     const[loading,setLoading]=useState<Boolean>(true);
+    console.log(`${BACKEND_URL}/api/v1/blog/${id}`);
     useEffect(()=>{
         axios.get(`${BACKEND_URL}/api/v1/blog/${id}`,{
             headers:{
                 Authorization:`Bearer ${localStorage.getItem("jwt")}`
             }
         }).then(function(response){
-            // console.log(response.data)
+            console.log(`response.data: ${response.data}`)
             setBlog(response.data.post)
             setLoading((loading)=>false)
         })

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 export default function Home() {
   return (
-    <div className='min-h-screen bg-gray-100 flex flex-col'>
+    <div className='min-h-screen flex flex-col bg-gradient-to-br from-blue-50 via-blue-100 to-white'>
       <Topbar></Topbar>
       <div className='mx-7 my-14'>
         <div className='font-bold text-3xl mb-4'>Welcome to Blogosphere</div>
@@ -13,7 +13,7 @@ export default function Home() {
         <div className='bg-white border rounded-lg shadow-md flex flex-col justify-center items-center px-6 py-5'>
             <div className='font-semibold text-2xl m-2'>Join Blogosphere Today</div>
             <div className='mb-5 text-lg'>Sign up to start sharing your ideas and connecting with other writers.</div>
-            <button className='bg-black p-2 text-white font-semibold rounded-lg m-2'>Get started</button>
+            <Link className='bg-black p-2 text-white font-semibold rounded-lg m-2' to={'/signup'}>Get started</Link>
         </div>
       </div>
     </div>

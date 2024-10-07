@@ -6,9 +6,11 @@ import Appbar from '../components/Appbar';
 export default function Blog() {
   const {id}=useParams();
   if(!id)return <div className='text-red-700'>Error: Blog Id is missing!! </div>
+  console.log(`id:${id}`)
   const {blog,loading}=useBlog(id)
+  console.log(`blog:${JSON.stringify(blog)}`)
   return <>
-    <Appbar authorName={blog.author.name}></Appbar>
+    <Appbar></Appbar>
     {loading?<div className='flex justify-center items-center mt-52 italic'>Loading...</div>:<BlogDetails blog={blog}></BlogDetails>}
   </>
 }
@@ -20,9 +22,9 @@ function BlogDetails({blog}:any){
 
       {/* Left  */}
       <div className='col-span-2'>
-        <div className='text-3xl font-extrabold mb-2.5'> {blog.title} </div>
+        <div className='text-3xl font-extrabold mb-2.5 break-words'> {blog.title} </div>
         <div className='text-gray-500 mb-2.5'> {publishedDate} </div>
-        <div className=''> {blog.content} </div>
+        <div className='break-words'> {blog.content} </div>
       </div>
 
       {/* Right */}

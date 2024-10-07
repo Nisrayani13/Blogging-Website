@@ -1,10 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-interface AppbarProps{
-    authorName:string
-}
-export default function Appbar({authorName}:AppbarProps) {
+export default function Appbar() {
   const [dropDownVisible, setDropDownVisible]=useState<Boolean>(false);
 
   const toggle=()=>{
@@ -12,7 +9,7 @@ export default function Appbar({authorName}:AppbarProps) {
   }
 
   return (
-      <div className="fixed top-0 left-0 right-0 bg-white px-4 flex items-center justify-between border-b mb-4 py-1">
+      <div className="bg-white px-4 flex items-center justify-between border-b mb-4 py-1">
         <div className="flex justify-center items-center">
           <svg width="60" height="60"
               viewBox="0 -55 256 256" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid">
@@ -25,7 +22,7 @@ export default function Appbar({authorName}:AppbarProps) {
           </svg>
           <div className="px-5 text-2xl font-bold">Blogosphere</div>
         </div>
-        <div className="flex justify-between items-center gap-x-5 mr-5">
+        <div className="flex justify-between items-center gap-x-5 mr-3">
           <Link to={"/publish"}>
             <button className="bg-green-600 rounded-full text-white py-1.5 px-3">
               <div className="flex gap-x-1 pr-1 justify-center items-center">
@@ -39,9 +36,11 @@ export default function Appbar({authorName}:AppbarProps) {
               </div>
             </button>
           </Link>
-          <div>
-            <button className="bg-black rounded-full w-9 h-9 text-center text-white text-2xl" onClick={toggle}>
-              {authorName[0]}
+          <div className="">
+            <button className="bg-gray-800 rounded-full w-9 h-9 text-center text-white text-lg flex justify-center items-center" onClick={toggle}>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="size-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+              </svg>
             </button>
           </div>
         </div>
