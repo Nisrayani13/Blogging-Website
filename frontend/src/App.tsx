@@ -1,5 +1,3 @@
-import React from "react";
-import { Suspense, useState } from 'react'
 import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Signup from './pages/Signup'
@@ -8,6 +6,7 @@ import Blog from './pages/Blog'
 import Blogs from './pages/Blogs'
 import Publish from "./pages/Publish";
 import Home from "./pages/Home";
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
@@ -19,6 +18,7 @@ function App() {
         <Route path='/blogs' element={<Blogs></Blogs>}></Route>
         <Route path='/blog/:id' element={<Blog></Blog>}></Route>
         <Route path="/publish" element={<Publish></Publish>}></Route>
+        <Route path="/navbar" element={<Navbar></Navbar>}></Route>
       </Routes>
     </BrowserRouter>
   )

@@ -2,6 +2,7 @@ import React from 'react'
 import { useBlog } from '../hooks/hooks'
 import { useParams } from 'react-router-dom'
 import Appbar from '../components/Appbar';
+import BlogDetailsSkeleton from '../components/BlogDetailsSkeleton';
 
 export default function Blog() {
   const {id}=useParams();
@@ -11,7 +12,9 @@ export default function Blog() {
   console.log(`blog:${JSON.stringify(blog)}`)
   return <>
     <Appbar></Appbar>
-    {loading?<div className='flex justify-center items-center mt-52 italic'>Loading...</div>:<BlogDetails blog={blog}></BlogDetails>}
+    {loading?
+      <BlogDetailsSkeleton></BlogDetailsSkeleton>:<BlogDetails blog={blog}></BlogDetails>
+    }
   </>
 }
 
