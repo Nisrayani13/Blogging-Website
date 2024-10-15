@@ -1,15 +1,13 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Appbar() {
-  const [dropDownVisible, setDropDownVisible]=useState<Boolean>(false);
-
-  const toggle=()=>{
-    setDropDownVisible((dropDownVisible)=>!dropDownVisible)
-  }
+  const navigate=useNavigate();
 
   return (
       <div className="bg-white px-4 flex items-center justify-between border-b mb-4 py-1">
+
+        {/* Left */}
         <div className="flex justify-center items-center">
           <svg width="60" height="60"
               viewBox="0 -55 256 256" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid">
@@ -20,14 +18,26 @@ export default function Appbar() {
               ></path>
               </g>
           </svg>
+
           <div className="px-5 text-2xl font-bold">Blogosphere</div>
+
+          <button onClick={()=>{
+            navigate("/blogs")
+          }}>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="size-8">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+            </svg>
+          </button>
+
         </div>
+
+        {/* Right */}
         <div className="flex justify-between items-center gap-x-5 mr-3">
           <Link to={"/publish"}>
             <button className="bg-green-600 rounded-full text-white py-1.5 px-3">
               <div className="flex gap-x-1 pr-1 justify-center items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="size-6 text-white">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6 text-white">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                 </svg>
 
                 <div className="font-semibold">
@@ -36,10 +46,11 @@ export default function Appbar() {
               </div>
             </button>
           </Link>
+          {/* user icon */}
           <div className="">
-            <button className="bg-gray-800 rounded-full w-9 h-9 text-center text-white text-lg flex justify-center items-center" onClick={toggle}>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="size-6">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+            <button className="bg-gray-800 rounded-full w-9 h-9 text-center text-white text-lg flex justify-center items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
               </svg>
             </button>
           </div>

@@ -27,7 +27,7 @@ function BlogDetails({blog}:any){
       <div className='col-span-2'>
         <div className='text-3xl font-extrabold mb-2.5 break-words'> {blog.title} </div>
         <div className='text-gray-500 mb-2.5'> {publishedDate} </div>
-        <div className='break-words'> {blog.content} </div>
+        <div className='break-words text-xl'> {blog.content} </div>
       </div>
 
       {/* Right */}

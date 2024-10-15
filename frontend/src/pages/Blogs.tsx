@@ -1,4 +1,3 @@
-import React from 'react';
 import BlogsCard from '../components/BlogsCard';
 import Appbar from '../components/Appbar';
 import useBlogs from '../hooks/hooks';
@@ -7,6 +6,7 @@ import BlogSkeleton from '../components/BlogSkeleton';
 export default function Blogs() {
   const {blogs,loading}=useBlogs();
   const publishedDate="October 3, 2024";
+
   return (
     <div className='min-h-screen bg-gray-100'>
       <div className="flex justify-center flex-col">
@@ -19,7 +19,7 @@ export default function Blogs() {
         </div>:
             <div className='flex flex-col items-center mx-6'>
             {blogs.map(function(blog){
-                return <BlogsCard id={blog.id} authorName={blog.author.name} title={blog.title} content={blog.content} publishedDate={publishedDate}></BlogsCard>
+                return <BlogsCard key={blog.id} id={blog.id} authorName={blog.author.name} title={blog.title} content={blog.content} publishedDate={publishedDate}></BlogsCard>
             })}
         </div>
         }
