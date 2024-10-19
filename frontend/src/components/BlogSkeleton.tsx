@@ -1,5 +1,3 @@
-import React from 'react'
-
 export default function BlogSkeleton() {
   return (
     <div role='status' className='animate-pulse  bg-white rounded-lg shadow mb-4 mx-4'>

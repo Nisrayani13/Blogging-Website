@@ -1,4 +1,3 @@
-import React from 'react'
 import { useBlog } from '../hooks/hooks'
 import { useParams } from 'react-router-dom'
 import Appbar from '../components/Appbar';

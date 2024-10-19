@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Signcard from "../components/Signcard";
 import InputField from "../components/InputField";
 import { SignupInputType } from "@nisrayani/bloggingsite";
@@ -26,7 +26,7 @@ export default function Signup() {
       localStorage.setItem("jwt",jwt)
       navigate("/blogs")
     }catch(error: any){
-      setWarning((warning)=> error.response.data.message)
+      setWarning(error.response.data.message)
       console.error(`error while sending request to backend: ${error.message}`)
     }
   }

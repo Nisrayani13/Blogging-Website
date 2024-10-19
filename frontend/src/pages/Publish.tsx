@@ -1,14 +1,7 @@
 import axios from 'axios';
-import React, { ChangeEvent, useState } from 'react'
+import { ChangeEvent, useState } from 'react'
 import { BACKEND_URL } from '../config';
 import { useNavigate } from 'react-router-dom';
-
-interface blog{
-    title:string,
-    content:string,
-    published: boolean,
-
-}
 
 export default function Publish() {
     const [title, setTitle] =useState("");
@@ -42,10 +35,10 @@ export default function Publish() {
             </div>
             <div className='px-2 flex-grow'>
                 <input type='text' placeholder='Title' className='px-2 block w-full text-3xl py-3 mb-4 border-l border-gray-300 break-words'
-                    onChange={(event: ChangeEvent<HTMLInputElement>)=> setTitle((title)=> event.target.value)}
+                    onChange={(event: ChangeEvent<HTMLInputElement>)=> setTitle(event.target.value)}
                 ></input>
                 <textarea rows={8} placeholder='Tell your story...' className='px-2 block w-full text-2xl italic break-words'
-                    onChange={(event: ChangeEvent<HTMLTextAreaElement>)=> setContent((content)=> event.target.value)}
+                    onChange={(event: ChangeEvent<HTMLTextAreaElement>)=> setContent(event.target.value)}
                 ></textarea>
             </div>
         </div>

@@ -6,7 +6,6 @@ import Blog from './pages/Blog'
 import Blogs from './pages/Blogs'
 import Publish from "./pages/Publish";
 import Home from "./pages/Home";
-import Navbar from "./components/Navbar";
 import { RecoilRoot } from 'recoil'
 
 function App() {
@@ -20,7 +19,6 @@ function App() {
           <Route path='/blogs' element={<Blogs></Blogs>}></Route>
           <Route path='/blog/:id' element={<Blog></Blog>}></Route>
           <Route path="/publish" element={<Publish></Publish>}></Route>
-          <Route path="/navbar" element={<Navbar></Navbar>}></Route>
         </Routes>
       </BrowserRouter>
     </RecoilRoot>

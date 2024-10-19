@@ -2,7 +2,6 @@ import BlogsCard from '../components/BlogsCard';
 import Appbar from '../components/Appbar';
 import useBlogs from '../hooks/hooks';
 import BlogSkeleton from '../components/BlogSkeleton';
-import { useEffect, useState } from 'react';
 
 export default function Blogs() {
   const {blogs,loading}=useBlogs();

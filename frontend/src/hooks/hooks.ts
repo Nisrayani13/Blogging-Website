@@ -1,4 +1,4 @@
-import React, { lazy, useEffect, useState } from 'react'
+import {useEffect, useState } from 'react'
 import axios from "axios"
 import { BACKEND_URL } from '../config';
 
@@ -50,7 +50,7 @@ export function useBlog(id: string){
         }).then(function(response){
             console.log(`response.data: ${response.data}`)
             setBlog(response.data.post)
-            setLoading((loading)=>false)
+            setLoading(false)
         })
     },[])
     return {blog,loading}
