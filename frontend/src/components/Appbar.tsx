@@ -1,11 +1,42 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 export default function Appbar() {
   const navigate=useNavigate();
+  const location = useLocation();
+  const [isDropDownMenu,setDropDownMenu]=useState(false)
+
+  // add shadow to top bar while scrolling
+  const [isScrolled, setIsScrolled]=useState(false);
+
+  useEffect(()=>{
+    const handleScroll=()=>{
+      if(window.scrollY > 70)setIsScrolled(true);
+      else setIsScrolled(false);
+    }
+
+    window.addEventListener("scroll",handleScroll);
+
+    return ()=>{
+      window.removeEventListener("scroll", handleScroll);
+    }
+  },[])
+
+  // check if user in home page only(blogs.tsx) if yes highlight home icon
+  const isHomePage=(location.pathname==="/blogs");
+
+  // toggledropdownMenu
+  const toggleDropDownMenu=()=>{
+    setDropDownMenu(!isDropDownMenu);
+  }
+
+  const handleLogout=()=>{
+    localStorage.removeItem("token");
+    navigate("/home")
+  }
 
   return (
-      <div className="bg-white px-4 flex items-center justify-between border-b mb-4 py-1">
+      <div className={`fixed top-0 left-0 right-0 bg-white px-4 flex items-center justify-between border-b py-1 ${isScrolled? "shadow-xl":""}`}>
 
         {/* Left */}
         <div className="flex justify-center items-center">
@@ -23,8 +54,13 @@ export default function Appbar() {
 
           <button onClick={()=>{
             navigate("/blogs")
-          }}>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="size-8">
+          }}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className={`relative transition-all duration-300 ease-in-out ${
+            isHomePage
+              ? "text-gray-500 size-8"
+              : "text-black hover:text-blue-600 hover:scale-105 size-8"
+          }`} >
               <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
             </svg>
           </button>
@@ -46,14 +82,22 @@ export default function Appbar() {
               </div>
             </button>
           </Link>
+
           {/* user icon */}
-          <div className="">
-            <button className="bg-gray-800 rounded-full w-9 h-9 text-center text-white text-lg flex justify-center items-center">
+          <div className="relative">
+            <button onClick={toggleDropDownMenu} className="bg-gray-800 rounded-full w-9 h-9 text-center text-white text-lg flex justify-center items-center">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
               </svg>
             </button>
           </div>
+
+          {/* Dropdown Menu */}
+          {isDropDownMenu?<div className="absolute right-1 top-14 p-2 text-center w-24 bg-white shadow-lg rounded-md z-10 border border-gray-200 bg-gray-900">
+            <ul>
+              <li onClick={handleLogout} className="text-white">Logout</li>
+            </ul>
+          </div>:null}
         </div>
 
       </div>

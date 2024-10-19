@@ -2,13 +2,14 @@ import BlogsCard from '../components/BlogsCard';
 import Appbar from '../components/Appbar';
 import useBlogs from '../hooks/hooks';
 import BlogSkeleton from '../components/BlogSkeleton';
+import { useEffect, useState } from 'react';
 
 export default function Blogs() {
   const {blogs,loading}=useBlogs();
   const publishedDate="October 3, 2024";
 
   return (
-    <div className='min-h-screen bg-gray-100'>
+    <div className='pt-20 min-h-screen bg-gray-100'>
       <div className="flex justify-center flex-col">
         <Appbar></Appbar>
         <div className='text-2xl font-bold mx-8 mb-5 mt-2'>Latest Posts</div>

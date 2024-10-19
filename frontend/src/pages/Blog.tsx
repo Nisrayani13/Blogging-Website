@@ -10,12 +10,12 @@ export default function Blog() {
   console.log(`id:${id}`)
   const {blog,loading}=useBlog(id)
   console.log(`blog:${JSON.stringify(blog)}`)
-  return <>
+  return <div className='pt-14'>
     <Appbar></Appbar>
     {loading?
       <BlogDetailsSkeleton></BlogDetailsSkeleton>:<BlogDetails blog={blog}></BlogDetails>
     }
-  </>
+  </div>
 }
 
 function BlogDetails({blog}:any){
