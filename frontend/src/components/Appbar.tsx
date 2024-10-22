@@ -95,7 +95,7 @@ export default function Appbar() {
           {/* Dropdown Menu */}
           {isDropDownMenu?<div className="absolute right-1 top-14 p-2 text-center w-24 bg-white shadow-lg rounded-md z-10 border border-gray-200 bg-gray-900">
             <ul>
-              <li onClick={handleLogout} className="text-white">Logout</li>
+              <li onClick={handleLogout} className="text-black">Logout</li>
             </ul>
           </div>:null}
         </div>
