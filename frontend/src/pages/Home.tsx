@@ -22,7 +22,7 @@ export default function Home() {
 function Topbar(){
 
     return (
-    <div className="bg-white px-4 flex items-center justify-between border-b mb-4 py-1">
+    <div className="w-screen bg-white px-4 flex items-center justify-between border-b mb-4 py-1">
         {/* Left */}
         <div className="flex justify-center items-center">
             <svg width="60" height="60"

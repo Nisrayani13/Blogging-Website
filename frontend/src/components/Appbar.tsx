@@ -36,7 +36,7 @@ export default function Appbar() {
   }
 
   return (
-      <div className={`fixed top-0 left-0 right-0 bg-white px-4 flex items-center justify-between border-b py-1 ${isScrolled? "shadow-xl":""}`}>
+      <div className={`fixed w-screen top-0 left-0 right-0 bg-white px-4 flex items-center justify-between border-b py-1 ${isScrolled? "shadow-xl":""}`}>
 
         {/* Left */}
         <div className="flex justify-center items-center">
