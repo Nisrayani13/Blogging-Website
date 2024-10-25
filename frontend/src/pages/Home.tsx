@@ -10,8 +10,8 @@ export default function Home() {
       </div>
       <div className='flex justify-center mt-12'>
         <div className='bg-white border rounded-lg shadow-md flex flex-col justify-center items-center px-6 py-5'>
-            <div className='font-semibold text-2xl m-2'>Join Blogosphere Today</div>
-            <div className='mb-5 text-lg'>Sign up to start sharing your ideas and connecting with other writers.</div>
+            <div className='font-semibold text-xl sm:text-2xl m-2'>Join Blogosphere Today</div>
+            <div className='mb-5 text-base sm:text-lg'>Sign up to start sharing your ideas and connecting with other writers.</div>
             <Link className='bg-black p-2 text-white font-semibold rounded-lg m-2' to={'/signup'}>Get started</Link>
         </div>
       </div>
