@@ -5,8 +5,8 @@ export default function Home() {
     <div className='min-h-screen flex flex-col bg-gray-100'>
       <Topbar></Topbar>
       <div className='mx-7 my-14'>
-        <div className='font-bold text-3xl mb-4'>Welcome to Blogosphere</div>
-        <div className='text-2xl'>Share your thoughts, discover new ideas, and connect with writers from around the world.</div>
+        <div className='font-bold text-2xl sm:text-3xl mb-4'>Welcome to Blogosphere</div>
+        <div className='text-xl sm:text-2xl'>Share your thoughts, discover new ideas, and connect with writers from around the world.</div>
       </div>
       <div className='flex justify-center mt-12'>
         <div className='bg-white border rounded-lg shadow-md flex flex-col justify-center items-center px-6 py-5'>
