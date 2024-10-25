@@ -36,7 +36,7 @@ export default function Appbar() {
   }
 
   return (
-      <div className={`fixed w-screen top-0 left-0 right-0 bg-white px-4 flex items-center justify-between border-b py-1 ${isScrolled? "shadow-xl":""}`}>
+      <div className={`fixed w-screen top-0 left-0 right-0 bg-white px-4 flex items-center justify-between border-b py-2 ${isScrolled? "shadow-xl":""}`}>
 
         {/* Left */}
         <div className="flex justify-center items-center">
@@ -70,7 +70,7 @@ export default function Appbar() {
         {/* Right */}
         <div className="flex justify-between items-center gap-x-1 sm:gap-x-5 mr-0 sm:mr-3">
           <Link to={"/publish"}>
-            <button className="bg-green-600 rounded-full text-white py-1.5 px-0.5 sm:px-3">
+            <button className="bg-green-600 rounded-full text-white py-1 sm:py-1.5 px-0.5 sm:px-3">
               <div className="flex gap-x-1 pr-1 justify-center items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6 text-white">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
@@ -86,7 +86,7 @@ export default function Appbar() {
           {/* user icon */}
           <div className="relative">
             <button onClick={toggleDropDownMenu} className="bg-gray-800 rounded-full w-6 sm:w-9 h-6 sm:h-9 text-center text-white text-lg flex justify-center items-center">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-4 sm:size-6">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
               </svg>
             </button>
