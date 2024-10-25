@@ -33,7 +33,7 @@ export default function Signcard({
           <div className="py-3">{children}</div>
           <button onClick={onClick} className="mt-0.5 bg-black text-white border rounded-lg w-full p-1.5 ">{buttonText} </button>
           <div className="pt-1 flex justify-center">
-            <div className="text-base mr-1.5">{subheading}</div>
+            <div className="text-base mr-0 sm:mr-1.5">{subheading}</div>
             <Link to={linkTo} className="underline text-blue-500">{linktext} </Link>
           </div>
         </div>

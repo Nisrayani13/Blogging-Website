@@ -40,7 +40,7 @@ export default function Appbar() {
 
         {/* Left */}
         <div className="flex justify-center items-center">
-          <svg width="60" height="60"
+          <svg width="40" height="40"
               viewBox="0 -55 256 256" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid">
               <g>
               <path
@@ -50,7 +50,7 @@ export default function Appbar() {
               </g>
           </svg>
 
-          <div className="px-5 text-2xl font-bold">Blogosphere</div>
+          <div className="px-5 text-xl sm:text-2xl font-bold">Blogosphere</div>
 
           <button onClick={()=>{
             navigate("/blogs")
@@ -58,8 +58,8 @@ export default function Appbar() {
           >
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className={`relative transition-all duration-300 ease-in-out ${
             isHomePage
-              ? "text-gray-500 size-8"
-              : "text-black hover:text-blue-600 hover:scale-105 size-8"
+              ? "text-gray-500 size-6 sm:size-8"
+              : "text-black hover:text-blue-600 hover:scale-105 size-6 sm:size-8"
           }`} >
               <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
             </svg>
@@ -68,15 +68,15 @@ export default function Appbar() {
         </div>
 
         {/* Right */}
-        <div className="flex justify-between items-center gap-x-5 mr-3">
+        <div className="flex justify-between items-center gap-x-1 sm:gap-x-5 mr-0 sm:mr-3">
           <Link to={"/publish"}>
-            <button className="bg-green-600 rounded-full text-white py-1.5 px-3">
+            <button className="bg-green-600 rounded-full text-white py-1.5 px-0.5 sm:px-3">
               <div className="flex gap-x-1 pr-1 justify-center items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6 text-white">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                 </svg>
 
-                <div className="font-semibold">
+                <div className="font-semibold text-sm sm:text-base">
                   New Post
                 </div>
               </div>
@@ -85,7 +85,7 @@ export default function Appbar() {
 
           {/* user icon */}
           <div className="relative">
-            <button onClick={toggleDropDownMenu} className="bg-gray-800 rounded-full w-9 h-9 text-center text-white text-lg flex justify-center items-center">
+            <button onClick={toggleDropDownMenu} className="bg-gray-800 rounded-full w-6 sm:w-9 h-6 sm:h-9 text-center text-white text-lg flex justify-center items-center">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
               </svg>
