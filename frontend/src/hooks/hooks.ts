@@ -6,6 +6,7 @@ interface Blog{
     id:string,
     title:string,
     content:string,
+    publishedDate: string,
     author:{
         name:string
     }
@@ -35,6 +36,7 @@ export function useBlog(id: string){
         id:"",
         title:"",
         content:"",
+        publishedDate:"",
         author:{
             name:""
         }

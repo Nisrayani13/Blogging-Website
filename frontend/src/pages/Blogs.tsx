@@ -3,9 +3,18 @@ import Appbar from '../components/Appbar';
 import useBlogs from '../hooks/hooks';
 import BlogSkeleton from '../components/BlogSkeleton';
 
+const months: string[] = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
 export default function Blogs() {
   const {blogs,loading}=useBlogs();
-  const publishedDate="October 3, 2024";
+  const formattedDate=(publishedDate:string):string=>{
+    const YMD=publishedDate.split("T")[0];  //YMD: Year month date
+    const ymd=YMD.split("-");
+    const year=ymd[0];
+    const month=months[Number(ymd[1])];
+    const date=ymd[2];
+    return `${month} ${date}, ${year}`
+  }
 
   return (
     <div className='pt-20 min-h-screen bg-gray-100'>
@@ -19,7 +28,7 @@ export default function Blogs() {
         </div>:
             <div className='flex flex-col items-center mx-6'>
             {blogs.map(function(blog){
-                return <BlogsCard key={blog.id} id={blog.id} authorName={blog.author.name} title={blog.title} content={blog.content} publishedDate={publishedDate}></BlogsCard>
+                return <BlogsCard key={blog.id} id={blog.id} authorName={blog.author.name} title={blog.title} content={blog.content} publishedDate={formattedDate(blog.publishedDate)}></BlogsCard>
             })}
         </div>
         }
