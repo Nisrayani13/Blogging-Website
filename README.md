@@ -4,7 +4,7 @@ Welcome to the Blogging Website! This project is a simple yet powerful platform 
 
 ## Live Demo
 
-Check out the live version of the website here: [Blogging Website](https://blogging-website-yrcjkszew-nisrayanis-projects.vercel.app/)
+Check out the live version of the website here: [Blogging Website](https://blogging-website-rho-eight.vercel.app/)
 
 ## Features
 
