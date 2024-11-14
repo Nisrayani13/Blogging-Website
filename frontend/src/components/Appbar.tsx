@@ -32,7 +32,7 @@ export default function Appbar() {
 
   const handleLogout=()=>{
     localStorage.removeItem("token");
-    navigate("/home")
+    navigate("/signin")
   }
 
   return (

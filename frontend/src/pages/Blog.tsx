@@ -18,14 +18,14 @@ export default function Blog() {
 }
 
 function BlogDetails({blog}:any){
-    const publishedDate="Dec 3, 2023"
+    
   return <div>
     <div className='grid grid-cols-3 gap-x-4 sm:gap-x-6 p-10 mx-0.5 sm:mx-4 my-4'>
 
       {/* Left  */}
       <div className='col-span-2'>
         <div className='text-2xl font-extrabold mb-2.5 break-words'> {blog.title} </div>
-        <div className='text-gray-500 mb-2.5'> {publishedDate} </div>
+        <div className='text-gray-500 mb-2.5'> {blog.publishedDate} </div>
         <div className='break-words text-lg'> {blog.content} </div>
       </div>
 
